@@ -6,12 +6,22 @@
 <body>
   <h1 onmousedown="hideParagraph()">Alexander Hamilton</h1>
   <p>Alexander Hamilton (January 11, 1755 or 1757 – July 12, 1804) was an American statesman and one of the Founding Fathers of the United States. He was an influential interpreter and promoter of the U.S. Constitution, as well as the founder of the nation's financial system, the Federalist Party, the United States Coast Guard, and The New York Post newspaper.</p>
+  <button onclick="addLeftPadding()">Click here for a surprise</button>
+  <button onclick="makeHeaderRandomColor()">Click here for an even cooler surprise</button>
 </body>
 </html>
 
 <style type="text/css">
   .hidden {
     display: none;
+  }
+
+  .red {
+    color: red;
+  }
+
+  .left-padding {
+    padding-left: 100px;
   }
 </style>
 
@@ -30,6 +40,43 @@
     // modify the selected element
     paragraph.classList.toggle('hidden');
     paragraph.style.display = 'none';
+  }
 
+  function addLeftPadding() {
+    console.log('turning the header red...');
+    // select the element
+    var header = document.querySelector('h1');
+    console.log(header);
+    // modify the element
+    header.classList.add('left-padding');
+  }
+
+  function makeHeaderRandomColor() {
+    console.log('making header random color');
+    // get the header
+    var header = document.querySelector('h1');
+    // add some styling
+    header.style.color = getRandomColor();
+  //   setInterval(function() {
+  //     var body = document.querySelector('body');
+  //     body.style['background-color'] = getRandomColor();
+  //     console.log('doing a thing');
+  //   }, 100)
+  }
+
+
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+
+
+  function setRandomColor() {
+    $("#colorpad").css("background-color", getRandomColor());
   }
 </script>
